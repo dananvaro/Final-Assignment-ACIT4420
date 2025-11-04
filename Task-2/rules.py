@@ -1,11 +1,4 @@
 
-
-
-# Survival: A live cell with two or three live neighbors lives on to the next generation.
-# Death by underpopulation: A live cell with fewer than two live neighbors dies.
-# Death by overpopulation: A live cell with more than three live neighbors dies.
-# Birth: A dead cell with exactly three live neighbors becomes a live cell in the next generation.
-
 def rules(inGrid):
 
     # Save the row and column length
@@ -49,26 +42,3 @@ def rules(inGrid):
                 newGrid[i][j] = 1
 
     return newGrid
-    
-        
-
-
-
-
-
-testGrid = [
-    [0,0,0,0,0],
-    [0,0,0,0,0],
-    [1,1,1,1,1],
-    [0,0,0,0,0],
-    [0,0,0,0,0],
-]
-
-for _ in range(25):
-    newGrid = rules(testGrid)
-
-    for row in newGrid: 
-        print(row)
-
-    print("---------")
-    testGrid = newGrid

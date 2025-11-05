@@ -1,22 +1,19 @@
 from board import Board
-from  io_handler import readFromFile
+from io_handler import readFromFile
 
+data = readFromFile("blinkerpattern.txt")
+rows, cols = data[0]
+liveBoard = data[1:]
 
-newBoard = Board(3,3)
+newBoard = Board(rows, cols)
 
-newBoard.updateCell(0,1)
-newBoard.updateCell(1,1)
-newBoard.updateCell(2,1)
+for row, col in liveBoard:
+    newBoard.updateCell(row, col)
 
+print("OG grid:")
+print(newBoard.displayBoard())
 
-readFromFile("blinkerpattern.txt")
-
-#for i in range(101):
-#
-#    if(i == 0):
-#        print("OG grid: ")
-#    else:
-#        print("Gen",i)
-#        newBoard.nextGen()
-#    
-#    print(newBoard.displayBoard())
+for i in range(1, 5):
+    newBoard.nextGen()
+    print(f"Gen {i}")
+    print(newBoard.displayBoard())

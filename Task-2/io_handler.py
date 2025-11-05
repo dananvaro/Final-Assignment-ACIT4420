@@ -1,52 +1,39 @@
 import re
 import os
-import warnings
 
 def readFromFile(filepath):
+    
+    # Regex for the Grid header line
+    grid_pattern = r"^Grid\(\s*(\d+)\s*,\s*(\d+)\s*\)$"
+    
+    # Regex for coordinate lines like (0,1)
+    coord_pattern = r"^\(\s*(\d+)\s*,\s*(\d+)\s*\)$"
 
-    row = None
-    col = None
-    aliveCells = []
+    patternPath = os.path.join(os.path.dirname(__file__), "Patterns", filepath)
+    if not os.path.exists(patternPath):
+        raise FileNotFoundError("File does not exist!")
 
-    rowColRegex = re.compile(r'^Grid\((-?\d+),(-?\d+)\)$')
-    aliveCellsRegex = re.compile(r'^\((-?\d+),(-?\d+)\)$')
-
-    extractRowCol = re.compile(r'Grid\((\d+),\s*(\d+)\)')
-    extractAliveCells = re.compile(r'\((\d+),\s*(\d+)\)')
-
-    patternPath = os.path.join(os.path.dirname(__file__),"Patterns", filepath)
-    if (not os.path.exists(patternPath)):
-        raise FileExistsError("File does not exist!")
-
+    output = []
     with open(patternPath) as f:
         for line in f:
-            if(re.match(rowColRegex, line)):
-                if((row or col) is not None):
-                    #warning
-                    continue
-                
-                matchRowCol = extractRowCol.search(line)
-                row, col = map(int, matchRowCol.groups())
+            line = line.strip()
+            if not line:
+                continue  # skip empty lines
 
-                print(row,col)
+            # First line should be the Grid(...) line
+            grid_match = re.match(grid_pattern, line)
+            if grid_match:
+                rows, cols = map(int, grid_match.groups())
+                output.append((rows,cols))
+                continue  # move to next line
 
+            # Coordinate lines
+            coord_match = re.match(coord_pattern, line)
+            if coord_match:
+                x, y = map(int, coord_match.groups())
+                output.append((x, y))
 
-            elif(re.match(aliveCellsRegex, line)):
-
-                matchAliveCells = extractAliveCells.search(line)
-                
-                
-
-            else:
-                #warning
-                print("Feil ass")
-
-
-
-
-
-    return row, col, aliveCells
-
+    return output
 
 
 def writeToFile():

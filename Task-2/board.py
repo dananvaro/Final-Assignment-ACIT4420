@@ -15,7 +15,7 @@ class Board:
                 tmpRow.append(0)
             self.grid.append(tmpRow)
     
-    def updateCell (self, row, col, cell):
+    def updateCell (self, row, col, cell=1):
 
         ## add exception
         self.grid[row][col] = cell

@@ -1,19 +1,15 @@
 from board import Board
 from  io_handler import readFromFile
 
+
 newBoard = Board(3,3)
 
 newBoard.updateCell(0,1)
 newBoard.updateCell(1,1)
 newBoard.updateCell(2,1)
 
-# row, col, aliveCells = readFromFile("Patterns/blinkerpattern.txt")
 
-with open("/Patterns/blinkerpattern.txt") as f:
-
-    print(f.readline())
-
-
+readFromFile("blinkerpattern.txt")
 
 #for i in range(101):
 #

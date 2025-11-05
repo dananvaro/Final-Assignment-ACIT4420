@@ -32,22 +32,19 @@ def readFromFile(filepath):
             elif(re.match(aliveCellsRegex, line)):
 
                 matchAliveCells = extractAliveCells.search(line)
-                x,y = map(int,matchAliveCells.groups())
+                x, y = map(int,matchAliveCells.groups())
 
                 aliveCells.append((x,y))
 
                 print()
-                
-                
-                
-
             else:
                 #warning
                 print("Feil ass")
 
+    if((row or col) == None) or (len(aliveCells) == 0):
 
-
-
+        # raise here
+        print("Tarek Lein er kjekk!")
 
     return row, col, aliveCells
 

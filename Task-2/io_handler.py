@@ -28,12 +28,16 @@ def readFromFile(filepath):
                 matchRowCol = extractRowCol.search(line)
                 row, col = map(int, matchRowCol.groups())
 
-                print(row,col)
-
 
             elif(re.match(aliveCellsRegex, line)):
 
                 matchAliveCells = extractAliveCells.search(line)
+                x,y = map(int,matchAliveCells.groups())
+
+                aliveCells.append((x,y))
+
+                print()
+                
                 
                 
 

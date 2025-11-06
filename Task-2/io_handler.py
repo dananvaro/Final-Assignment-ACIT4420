@@ -61,12 +61,12 @@ def writeToFile(input, genNumber,genAmount, inBoard):
         #Raise here
         pass
 
-    patternPath = os.path.join(os.path.dirname(__file__),"log", "log.txt")
+    patternPath = os.path.join(os.path.dirname(__file__),"log", "state_snapshots.txt")
     with open(patternPath, "a+") as f:
 
         if(genNumber == 0):
 
-            tmp = f"\nConway Game of life snapshots"
+            tmp = f"Conway Game of life snapshots"
 
             f.write(tmp + f"\nGrid {row} x {col}\n")
 

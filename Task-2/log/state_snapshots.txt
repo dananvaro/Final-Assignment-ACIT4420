@@ -1,7 +1,39 @@
-
+Conway Game of life snapshots
+Grid 3 x 3
+-----------------------------
+Initial Generation
+0 1 0 
+0 1 0 
+0 1 0 
+------------------
+Generation: 1
+0 0 0 
+1 1 1 
+0 0 0 
+-------------
+Generation: 2
+0 1 0 
+0 1 0 
+0 1 0 
+-------------
+Generation: 3
+0 0 0 
+1 1 1 
+0 0 0 
+-------------
+Generation: 4
+0 1 0 
+0 1 0 
+0 1 0 
+-------------
+Simulation ended with Gen: 5
+0 0 0 
+1 1 1 
+0 0 0 
+----------------------------
 Conway Game of life snapshots
 Grid 6 x 6
-------------------------------
+-----------------------------
 Initial Generation
 0 0 0 0 0 0 
 0 1 1 0 0 0 
@@ -50,10 +82,9 @@ Simulation ended with Gen: 5
 0 0 0 1 1 0 
 0 0 0 0 0 0 
 ----------------------------
-
 Conway Game of life snapshots
 Grid 6 x 6
-------------------------------
+-----------------------------
 Initial Generation
 0 0 0 0 0 0 
 0 1 1 0 0 0 

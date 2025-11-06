@@ -1,3 +1,4 @@
+import os
 from argparse import ArgumentParser, Namespace
 from board import Board
 from  io_handler import readFromFile, writeToFile
@@ -7,10 +8,13 @@ def main():
    
 
     
+    args = os.sys.argv
+    pattern = args[1]
+
+    
 
 
-
-    row, col, aliveCells = readFromFile("beehivepattern.txt")
+    row, col, aliveCells = readFromFile(pattern)
 
     newBoard = Board(row,col)
 

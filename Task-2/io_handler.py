@@ -1,6 +1,8 @@
 import re
 import os
 import warnings
+from board import Board
+
 
 def readFromFile(filepath):
 
@@ -50,8 +52,49 @@ def readFromFile(filepath):
 
 
 
-def writeToFile(input, genNumber):
+def writeToFile(input, genNumber,genAmount, inBoard):
     
+    row = inBoard.row
+    col = inBoard.col
+
+    if(input == None):
+        #Raise here
+        pass
+
     patternPath = os.path.join(os.path.dirname(__file__),"log", "log.txt")
     with open(patternPath, "a+") as f:
-        pass
+
+        if(genNumber == 0):
+
+            tmp = f"\nConway Game of life snapshots"
+
+            f.write(tmp + f"\nGrid {row} x {col}\n")
+
+            f.write(lineSpace(tmp) + "\n")
+
+            tmp = f"Initial Generation"
+            
+            f.write(tmp + f"\n{input}")
+            f.write(lineSpace(tmp)+ "\n")
+        
+        elif(genNumber == genAmount-1):
+
+            tmp = f"Simulation ended with Gen: {genNumber}"
+            f.write( tmp + f"\n{input}")
+            f.write(lineSpace(tmp)+ "\n")
+
+        else:
+            
+            tmp =f"Generation: {genNumber}"
+            f.write(tmp + f"\n{input}")
+            f.write(lineSpace(tmp)+ "\n")
+
+
+def lineSpace(string):
+
+    stringOut = ""
+
+    for _ in range(len(string)):
+        stringOut += "-"
+
+    return stringOut

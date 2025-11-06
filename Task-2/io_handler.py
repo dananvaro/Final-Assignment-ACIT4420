@@ -36,19 +36,22 @@ def readFromFile(filepath):
 
                 aliveCells.append((x,y))
 
-                print()
             else:
+
                 #warning
                 print("Feil ass")
 
     if((row or col) == None) or (len(aliveCells) == 0):
 
         # raise here
-        print("Tarek Lein er kjekk!")
+        print("Tarek Lein!")
 
     return row, col, aliveCells
 
 
 
-def writeToFile():
-    pass
+def writeToFile(input, genNumber):
+    
+    patternPath = os.path.join(os.path.dirname(__file__),"log", "log.txt")
+    with open(patternPath, "a+") as f:
+        pass

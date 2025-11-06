@@ -1,22 +1,26 @@
 from board import Board
 from  io_handler import readFromFile
 
+def main():
+    row, col, aliveCells = readFromFile("beehivepattern.txt")
 
-newBoard = Board(3,3)
+    newBoard = Board(row,col)
 
-# newBoard.updateCell(0,0)
-# newBoard.updateCell(1,1)
-# newBoard.updateCell(2,1)
-# 
-
-readFromFile("blinkerpattern.txt")
-
-for i in range(5):
-
-    if(i == 0):
-        print("OG grid: ")
-    else:
-        print("Gen",i)
-        newBoard.nextGen()
+    for(gridX,gridY) in aliveCells:
+        newBoard.updateCell(gridX,gridY)
     
-    print(newBoard.displayBoard())
+
+    for genNumber in range(21):
+
+        if(genNumber == 0):
+            print("OG grid: ")
+        else:
+            print("Gen",genNumber)
+            newBoard.nextGen()
+
+        print(newBoard.displayBoard())
+
+
+
+if __name__ == "__main__":
+    main()

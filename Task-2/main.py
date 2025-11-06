@@ -11,9 +11,6 @@ def main():
     args = os.sys.argv
     pattern = args[1]
 
-    
-
-
     row, col, aliveCells = readFromFile(pattern)
 
     newBoard = Board(row,col)

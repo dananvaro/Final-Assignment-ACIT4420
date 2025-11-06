@@ -1,5 +1,18 @@
 
-def rules(inGrid):
+# List of rules
+rulesList = {}
+
+# Gives the rule name wanted
+def rules(ruleName):
+    # Puts the rule in rules list and returns the rule function
+    def addRule(func):
+        rulesList[ruleName] = func
+        return func
+    # Furhter return the wanted function
+    return addRule
+
+@rules("default")
+def defaultRules(inGrid):
 
     # Save the row and column length
     arryRowLen = len(inGrid)
@@ -7,6 +20,7 @@ def rules(inGrid):
 
     newGrid = []
 
+    # Directions around the targeted cell
     directions = [(0,1),(1,0),(0,-1),(-1,0),(1,1),(-1,-1),(1,-1),(-1,1)]
 
     # Create a new empty grid with the same size 
@@ -16,6 +30,7 @@ def rules(inGrid):
             row.append(0)
         newGrid.append(row)
 
+    # Loops through the given Grid
     for i in range(arryRowLen):
         for j in range(arrColLen):
             aliveNeigbour = 0
@@ -25,19 +40,19 @@ def rules(inGrid):
                 ix = row + i
                 jy = col + j
 
+                # Checks if cells are inside of the grid
                 if((0 <= ix < arryRowLen and 0 <= jy < arrColLen) and (inGrid[ix][jy] == 1)):
                     aliveNeigbour+= 1
 
-            # Death by underpopulation: A live cell with fewer than two live neighbors dies.
-            # Death by overpopulation: A live cell with more than three live neighbors dies.
+            # If cell has less than two or more that 3 alive neighbors it dies
             if((aliveNeigbour < 2 or aliveNeigbour > 3) and inGrid[i][j] == 1):
                 newGrid[i][j] = 0
             
-            # Birth: A dead cell with exactly three live neighbors becomes a live cell in the next generation.
+            # If a cell has exactly 3 alive neighours it becomes alive
             elif(aliveNeigbour == 3 and inGrid[i][j] == 0):
                 newGrid[i][j] = 1
 
-            # Survival: A live cell with two or three live neighbors lives on to the next generation.
+            # If a cell has exaclty 2 or 3 alive cells it stays alive
             elif((aliveNeigbour == 2 or aliveNeigbour == 3) and inGrid[i][j]== 1):
                 newGrid[i][j] = 1
 

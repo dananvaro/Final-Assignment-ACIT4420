@@ -1,12 +1,13 @@
-from rules import rules
+from rules import rulesList, rules
 
 class Board:
 
-    def __init__(self, row, col):
+    def __init__(self, row, col, inRule ="default"):
 
         ## add exception
         self.row = row
         self.col = col
+        self.inRule = inRule
         self.grid = []
 
         for _ in range(self.row):
@@ -32,4 +33,7 @@ class Board:
         return stringGrid
     
     def nextGen(self):
-        self.grid = rules(self.grid)
+
+        rule = rulesList[self.inRule]
+        
+        self.grid = rule(self.grid)

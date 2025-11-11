@@ -5,11 +5,19 @@ from  io_handler import readFromFile, writeToFile
 
 def main():
 
-   
+    parser = ArgumentParser()
 
-    
-    args = os.sys.argv
-    pattern = args[1]
+    parser.add_argument('--filename', required=True, help="Pattern file name", type=str)
+    parser.add_argument('--generations',required=True, help="Number of generation", type= int)
+
+    args: Namespace = parser.parse_args()
+
+    pattern = args.filename
+
+    amountOfGeneration = args.generations + 1
+
+    print(pattern)
+    print(amountOfGeneration)
 
     row, col, aliveCells = readFromFile(pattern)
 
@@ -18,11 +26,7 @@ def main():
     for(gridX,gridY) in aliveCells:
         newBoard.updateCell(gridX,gridY)
 
-    
-    gens= 6
-    
-
-    for genNumber in range(gens):
+    for genNumber in range(amountOfGeneration):
 
         if(genNumber == 0):
             print("OG grid: ")
@@ -30,7 +34,7 @@ def main():
             print("Gen",genNumber)
             newBoard.nextGen()
 
-        writeToFile(newBoard.displayBoard(),genNumber,gens, newBoard)
+        writeToFile(newBoard.displayBoard(),genNumber,amountOfGeneration, newBoard)
 
         print(newBoard.displayBoard())
 

@@ -18,7 +18,7 @@ class Board:
     
     def updateCell (self, row, col, cell=1):
 
-        ## add exception
+        ## add warning
         self.grid[row][col] = cell
 
     def displayBoard(self):

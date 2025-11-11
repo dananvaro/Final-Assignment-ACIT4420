@@ -2,7 +2,7 @@ from rules import rulesList, rules
 
 class Board:
 
-    def __init__(self, row, col, inRule ="default"):
+    def __init__(self, row, col, inRule):
 
         ## add exception
         self.row = row

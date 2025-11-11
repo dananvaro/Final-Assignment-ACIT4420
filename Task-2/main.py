@@ -5,23 +5,32 @@ from  io_handler import readFromFile, writeToFile
 
 def main():
 
+    # Takes in a command line inputs from the user
     parser = ArgumentParser()
 
-    parser.add_argument('--filename', required=True, help="Pattern file name", type=str)
-    parser.add_argument('--generations',required=True, help="Number of generation", type= int)
+    parser.add_argument('--patternfile', required=True, help="Pattern file name with .txt", type=str)
+    parser.add_argument('--generations',required=True, help="Number of generations", type= int)
+    parser.add_argument('--ruleset',default="default", help="Choose a ruleset or default will be chosen",type=str)
 
     args: Namespace = parser.parse_args()
 
-    pattern = args.filename
-
+    # Assigns the patternname, generations and rule from the user to values
+    pattern = args.patternfile
     amountOfGeneration = args.generations + 1
+    rule = args.ruleset
 
-    print(pattern)
-    print(amountOfGeneration)
-
+    # Reads row, col and amout of alive cells from a file 
+    
+    #    Format: 
+    #    Grid(3,3) # Grid size 
+    #    (0,1) # Alive cells
+    #    (1,1)
+    #    (2,1)
+    
     row, col, aliveCells = readFromFile(pattern)
 
-    newBoard = Board(row,col)
+    # Creates a boards object 
+    newBoard = Board(row,col,rule)
 
     for(gridX,gridY) in aliveCells:
         newBoard.updateCell(gridX,gridY)

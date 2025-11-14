@@ -5,7 +5,7 @@ from  io_handler import readFromFile, writeToFile
 
 def main():
 
-    # Takes in a command line inputs from the user
+    # Takes in command lines inputs from the user
     parser = ArgumentParser()
 
     parser.add_argument('--patternfile', required=True, help="Pattern file name with .txt", type=str)
@@ -29,7 +29,7 @@ def main():
     
     row, col, aliveCells = readFromFile(pattern)
 
-    # Creates a boards object 
+    # Creates a Board object 
     newBoard = Board(row,col,rule)
 
     for(gridX,gridY) in aliveCells:

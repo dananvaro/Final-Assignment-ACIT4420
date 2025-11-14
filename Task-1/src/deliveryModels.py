@@ -13,7 +13,6 @@ class Deliviery:
 
 class TransportType:
     
-
     def __init__(self, type):
         self.type = str(type).lower()
         self.speed = None

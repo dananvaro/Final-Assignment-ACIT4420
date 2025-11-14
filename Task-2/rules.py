@@ -1,3 +1,4 @@
+
 # List of rules
 rulesList = {}
 
@@ -7,7 +8,7 @@ def rules(ruleName):
     def addRule(func):
         rulesList[ruleName] = func
         return func
-    # Furhter return the wanted function
+    # Further return the wanted function
     return addRule
 
 @rules("default")

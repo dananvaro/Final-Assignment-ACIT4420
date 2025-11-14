@@ -50,8 +50,6 @@ def readFromFile(filepath):
 
     return row, col, aliveCells
 
-
-
 def writeToFile(input, genNumber,genAmount, inBoard):
     
     row = inBoard.row

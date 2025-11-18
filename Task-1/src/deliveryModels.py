@@ -32,7 +32,7 @@ class TransportType:
             self.cost = 0
             self.co2 = 0
         else:
-            # Throw
+            # Expectiom or warning
             pass
 
 

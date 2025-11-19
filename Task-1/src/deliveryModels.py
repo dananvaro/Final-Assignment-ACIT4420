@@ -1,20 +1,14 @@
 
-class Deliviery:
+class Delivery:
 
-    def __init__(self, name, latitute, longitude, priority, weight):
+    def __init__(self, name, latitute, longitude, priority, weight, transportType):
 
         self.name = name
         self.latitute = float(latitute)
         self.longitude = float(longitude)
         self.priority = priority
         self.weight = float(weight)
-    
-
-
-class TransportType:
-    
-    def __init__(self, type):
-        self.type = str(type).lower()
+        self.transportType = str(transportType).lower()
         self.speed = None
         self.cost = None
         self.co2 = None

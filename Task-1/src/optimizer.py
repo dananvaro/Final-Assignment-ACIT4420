@@ -1,9 +1,18 @@
-from deliveryModels import Deliviery, TransportType
+from deliveryModels import Delivery
 from haversine import calculateHaversine
+import copy
 
 def optimizer(listOfDeliveries):
 
+    listOfCaluculatedDeliveries = None
 
+    for i in range(len(listOfDeliveries)):
+
+        delivery = Delivery()
+
+
+
+        pass
 
 
 

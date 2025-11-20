@@ -2,17 +2,32 @@ from deliveryModels import Delivery
 from haversine import calculateHaversine
 import copy
 
-def optimizer(listOfDeliveries):
+def optimizer(listOfDeliveries, depot, transportType, inputCriteria):
 
-    listOfCaluculatedDeliveries = None
+    deliveriesLeft = listOfDeliveries.copy()
 
-    for i in range(len(listOfDeliveries)):
+    criteria = {
 
-        delivery = Delivery()
+        "fastest" : scoreForFastest,
+        "cheapest" : scoreForLowestCost,
+        "lowest" : scoreForLowestCO2
 
+    }
 
+    scoreFunctions = criteria[inputCriteria]
 
-        pass
+    currentLat = depot.latitude
+    currentLon = depot.longitude
+
+    while not deliveriesLeft:
+
+        lowestScore = float('inf')
+        deliveryWithLowestScore = None
+
+        for delivery in listOfDeliveries:
+            score = scoreFunctions(delivery, calculateHaversine(),transportType)
+
+    
 
 
 
@@ -21,28 +36,28 @@ def optimizer(listOfDeliveries):
     return
 
 # Calculate score, lower score equals better score
-def scoreForFastest(delivery, distance):
+def scoreForFastest(delivery, distance,transportType):
 
-    score = distance / delivery.speed 
+    score = distance / transportType.speed 
 
     score = score * priorityScore(delivery.priority)
 
     return score
 
-def scoreCheapest(delivery, distance):
+def scoreForLowestCost(delivery, distance,transportType):
     
-    score =  distance * delivery.cost
+    score =  distance * transportType.cost
 
-    score = score * priorityScore(delivery.score)
+    score = score * priorityScore(delivery.priority)
 
 
     return score
 
-def scoreGreenest(delivery, distance):
+def scoreForLowestCO2(delivery, distance,transportType):
 
-    score = distance * delivery.co2
+    score = distance * transportType.co2
 
-    score = score * priorityScore(delivery.score)
+    score = score * priorityScore(delivery.priority)
     return score
 
 

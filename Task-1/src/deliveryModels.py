@@ -1,5 +1,5 @@
 
-class Deliviery:
+class Delivery:
 
     def __init__(self, name, latitude, longitude, priority, weight):
 

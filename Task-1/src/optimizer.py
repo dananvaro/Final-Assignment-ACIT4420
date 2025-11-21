@@ -1,7 +1,9 @@
 from deliveryModels import Delivery
 from haversine import calculateHaversine
 import copy
+from logTime import time
 
+@time
 def optimizer(listOfDeliveries, depot, transportType, inputCriteria):
 
 
@@ -31,6 +33,18 @@ def optimizer(listOfDeliveries, depot, transportType, inputCriteria):
     totalCost = 0.0
     totalCO2 = 0.0
 
+    # Add the depot to the 
+    routes.append({
+        "name" : depot.name,
+        "latitude" : depot.latitude,
+        "longitude" : depot.longitude,
+        "distanceFromLastStop" : 0.0,
+        "totalDistance" : 0.0,
+        "etaHours" : 0.0,
+        "costNOK" : 0.0,
+        "co2PerGram" : 0.0,
+        "weight" : 0.0
+    })
 
     # Looped until all Deliveries are looped through
     while deliveriesLeft:
@@ -56,9 +70,30 @@ def optimizer(listOfDeliveries, depot, transportType, inputCriteria):
                 deliveryWithLowestScore = delivery
                 distanceFromLast = distance
             
+        # Calculate metrics 
+        logDistance = distanceFromLast
+        logTime = logDistance / transportType.speed
+        logCost = logDistance * transportType.cost
+        logCO2 = logDistance * transportType.co2
+
+        # Update the metrics
+        totalDistance += logDistance
+        totalTime += logTime
+        totalCost += logCost
+        totalCO2 += logCO2
+
+        routes.append({
+        "name" : deliveryWithLowestScore.name,
+        "latitude" : deliveryWithLowestScore.latitude,
+        "longitude" : deliveryWithLowestScore.longitude,
+        "distanceFromLastStop" : logDistance,
+        "totalDistance" : totalDistance,
+        "etaHours" : totalTime,
+        "costNOK" : totalCost,
+        "co2PerGram" : totalCO2,
+        "weight" : deliveryWithLowestScore.weight
+        })
         
-
-
         # Then updated the current Lat and Lon for next iteration
         currentLat = deliveryWithLowestScore.latitude
         currentLon = deliveryWithLowestScore.longitude
@@ -67,24 +102,39 @@ def optimizer(listOfDeliveries, depot, transportType, inputCriteria):
         deliveriesLeft.remove(deliveryWithLowestScore)
 
 
-        ## Add depot for last stop
+    ## Add depot for last stop
+    depotStop = calculateHaversine(currentLat,currentLon, depot.latitude, depot.longitude)
 
-        metrics = {
+    # Calculate and update latest metrics and add to route 
+    logTime = depotStop / transportType.speed
+    logCost = depotStop * transportType.cost
+    logCO2 = depotStop * transportType.co2
 
-            "totalDistance" : totalDistance,
-            "totalTime" : totalTime,
-            "totalCost" : totalCost,
-            "totalCO2" : totalCO2
+    totalDistance += depotStop
+    totalTime += logTime
+    totalCost += logCost
+    totalCO2 += logCO2
 
-        }
+    routes.append({
+        "name" : depot.name,
+        "latitude" : depot.latitude,
+        "longitude" : depot.longitude,
+        "distanceFromLastStop" : depotStop,
+        "totalDistance" : totalDistance,
+        "etaHours" : totalTime,
+        "costNOK" : totalCost,
+        "co2PerGram" : totalCO2,
+        "weight" : 0.0
+    })
+
+    metrics = {
+        "totalDistance" : totalDistance,
+        "totalTime" : totalTime,
+        "totalCost" : totalCost,
+        "totalCO2" : totalCO2
+    }
 
     return routes, metrics
-
-
-
-
-
-
 
 # Calculate score, lower score equals better score
 def scoreForFastest(delivery, distance,transportType):
@@ -132,10 +182,3 @@ def priorityScore(priority):
         # Throw warning
 
     return priorityScore
-
-'''
-
-
-
-
-'''

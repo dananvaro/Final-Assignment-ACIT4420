@@ -10,7 +10,13 @@ logging.basicConfig(
     format="%(asctime)s  [%(levelname)s] %(message)s"
 )
 
-listOfDeliveries = loadDeliveries()
+def main():
+    listOfDeliveries = loadDeliveries()
 
-for delivery in listOfDeliveries:
-    print(delivery.name)
+    for delivery in listOfDeliveries:
+        print(delivery.name)
+
+
+if __name__ == "__main__":
+
+    main()

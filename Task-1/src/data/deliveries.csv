@@ -2,4 +2,5 @@ customer,latitude,longitude,priority,weight
 Depot, 59.9200718, 10.7357839, High, 0
 Tarek, 59.92043, 10.73284, Medium, 5
 Daniel, 59.916, 10.739, Low, -7
-Depot, 59.9200718, 10.7357839, sad, 0
+Adrian, 59.9141, 10.7480, High, 9
+Depot, 59.9200718, 10.7357839, Medium, 0

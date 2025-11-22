@@ -15,7 +15,7 @@ class Delivery:
 class TransportType:
     
     def __init__(self, type):
-        self.type = str(type).lower()
+        self.type = str(type).lower().strip()
         self.speed = None
         self.cost = None
         self.co2 = None

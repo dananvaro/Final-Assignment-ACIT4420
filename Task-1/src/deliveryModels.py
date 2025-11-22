@@ -1,4 +1,5 @@
 
+# Class for Delivery objects
 class Delivery:
 
     def __init__(self, name, latitude, longitude, priority, weight):
@@ -10,7 +11,7 @@ class Delivery:
         self.weight = float(weight)
     
 
-
+# Class for Transport type and its static values
 class TransportType:
     
     def __init__(self, type):

@@ -28,5 +28,3 @@ def calculateHaversine(latOne,lonOne,latTwo,lonTwo):
 
 
     return round(d,2)
-
-print(calculateHaversine(35.6895,139.6917,-33.8688,151.2093))

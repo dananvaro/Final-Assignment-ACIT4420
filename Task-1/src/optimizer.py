@@ -164,21 +164,20 @@ def scoreForLowestCO2(delivery, distance,transportType):
 
 def priorityScore(priority):
 
-    
+    # Sends back a neutral priority
+    if(priority == None):
+        return 1 
 
-    if(priority == "High"):
+    if(priority == "high"):
 
         priorityScore = 0.6
 
-    elif (priority == "Medium"):
+    elif (priority == "medium"):
 
         priorityScore = 1
 
-    elif (priority == "Low"):
+    elif (priority == "low"):
 
         priorityScore= 1.2
-    else:
-        pass
-        # Throw warning
 
     return priorityScore

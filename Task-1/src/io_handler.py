@@ -38,4 +38,33 @@ def loadDeliveries():
 
     return validDeliveries
 
+def writeRoutes(routes):
+
+    # Filednames to write headers
+    fieldnames = [
+        "name",
+        "latitude",
+        "longitude",
+        "distanceFromLastStop",
+        "totalDistance",
+        "etaHours",
+        "costNOK",
+        "co2PerGram",
+        "weight"
+    ]
+
+    # Pattern to the file
+    patternToRoutes = os.path.join(os.path.dirname(__file__), "data", "routes.csv")
+
+    # Opens and writes to the file
+    with open(patternToRoutes, "w",newline='',encoding='utf-8') as f:
+
+        
+        write = csv.DictWriter(f,fieldnames=fieldnames)
+        write.writeheader()
+
+        # Writes each row to file
+        for row in routes:
+
+            write.writerow(row)
 

@@ -10,6 +10,9 @@ def optimizer(listOfDeliveries, depot, transportType, inputCriteria):
     # Does a shallow copy of the list with Delivery objects
     deliveriesLeft = listOfDeliveries.copy()
 
+    # Removes the depot from the list as these get added later
+    deliveriesLeft = [d for d in deliveriesLeft if d is not depot]
+
     # Using dic to find the correct criteria
     criteria = {
 
@@ -163,21 +166,27 @@ def scoreForLowestCO2(delivery, distance,transportType):
 
 
 def priorityScore(priority):
+    
+    # Handles none values as it will return neutral
+    if priority is None:
+        return 1.0
+
+    priority = str(priority).lower().strip()
 
     # Sends back a neutral priority
-    if(priority == None):
-        return 1 
 
     if(priority == "high"):
 
-        priorityScore = 0.6
+        return 0.6
 
     elif (priority == "medium"):
 
-        priorityScore = 1
+        return 1
 
     elif (priority == "low"):
 
-        priorityScore= 1.2
+        return 1.2
 
-    return priorityScore
+    # Returns neutral
+    else:
+        return 1.0

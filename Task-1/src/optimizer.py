@@ -1,9 +1,9 @@
-from deliveryModels import Delivery
+from deliveryModels import Delivery, TransportType
 from haversine import calculateHaversine
 import copy
-from logTime import time
+from logTime import logExecutionTime
 
-@time
+@logExecutionTime
 def optimizer(listOfDeliveries, depot, transportType, inputCriteria):
 
 
@@ -164,7 +164,7 @@ def scoreForLowestCO2(delivery, distance,transportType):
 
 def priorityScore(priority):
 
-    priorityScore
+    
 
     if(priority == "High"):
 

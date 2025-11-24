@@ -1,4 +1,3 @@
-
 # Class for Delivery objects
 class Delivery:
 
@@ -32,10 +31,3 @@ class TransportType:
             self.speed = 5
             self.cost = 0
             self.co2 = 0
-        else:
-            # Expectiom or warning
-            pass
-
-
-        
-

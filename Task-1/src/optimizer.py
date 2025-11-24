@@ -36,19 +36,6 @@ def optimizer(listOfDeliveries, depot, transportType, inputCriteria):
     totalCost = 0.0
     totalCO2 = 0.0
 
-    # Add the depot to the 
-    routes.append({
-        "name" : depot.name,
-        "latitude" : depot.latitude,
-        "longitude" : depot.longitude,
-        "distanceFromLastStop" : 0.0,
-        "totalDistance" : 0.0,
-        "etaHours" : 0.0,
-        "costNOK" : 0.0,
-        "co2PerGram" : 0.0,
-        "weight" : 0.0
-    })
-
     # Looped until all Deliveries are looped through
     while deliveriesLeft:
 

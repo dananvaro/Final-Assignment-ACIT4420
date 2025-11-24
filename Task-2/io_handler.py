@@ -22,31 +22,40 @@ def readFromFile(filepath):
 
     with open(patternPath) as f:
         for line in f:
+
+            line = line.strip()
+
             if(re.match(rowColRegex, line)):
-                if((row or col) is not None):
-                    #warning
-                    continue
+                
                 
                 matchRowCol = extractRowCol.search(line)
-                row, col = map(int, matchRowCol.groups())
 
+                if matchRowCol:
+                                    
+                    row, col = map(int, matchRowCol.groups())    
+
+                else: 
+                    raise ValueError("Grid size cannot be ")
 
             elif(re.match(aliveCellsRegex, line)):
 
                 matchAliveCells = extractAliveCells.search(line)
-                x, y = map(int,matchAliveCells.groups())
 
-                aliveCells.append((x,y))
+                if matchAliveCells:
+                    x, y = map(int,matchAliveCells.groups())
+
+                    aliveCells.append((x,y))
+                else:
+                    warnings.warn(f"Line cannot be of type None: {line}, line will be skipped.", category=UserWarning)
 
             else:
 
-                #warning
-                print("Feil ass")
+                warnings.warn(f"Invalid line deteced: {line}, line will be skipped.", category=UserWarning)
 
     if((row or col) == None) or (len(aliveCells) == 0):
-
-        # raise here
-        print("Tarek Lein!")
+        raise ValueError (f"Print row, col or amount of cells are invalid: row: {row}, col: {col} and alive cells: {aliveCells}")
+    
+    print(aliveCells[0])
 
     return row, col, aliveCells
 

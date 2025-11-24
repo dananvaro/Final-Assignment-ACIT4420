@@ -67,4 +67,3 @@ def writeRoutes(routes):
         for row in routes:
 
             write.writerow(row)
-

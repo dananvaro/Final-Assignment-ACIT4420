@@ -1,10 +1,10 @@
 from rules import rulesList, rules
+import warnings
 
 class Board:
 
     def __init__(self, row, col, inRule):
 
-        ## add exception
         self.row = row
         self.col = col
         self.inRule = inRule
@@ -16,10 +16,14 @@ class Board:
                 tmpRow.append(0)
             self.grid.append(tmpRow)
     
-    def updateCell (self, row, col, cell=1):
+    def updateCell (self, gridRow, gridCol, cell=1):
+        
+        if (0 <= gridRow < self.row and 0 <= gridCol < self.col):
+            self.grid[gridRow][gridCol] = cell
 
-        ## add warning
-        self.grid[row][col] = cell
+        else:
+            warnings.warn(f"Grid is out of bound and will be skipped.")
+
 
     def displayBoard(self):
         

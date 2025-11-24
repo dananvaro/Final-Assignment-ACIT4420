@@ -3,6 +3,11 @@ from argparse import ArgumentParser, Namespace
 from board import Board
 from  io_handler import readFromFile, writeToFile
 
+import warnings
+
+warnings.simplefilter("always")
+warnings.formatwarning = lambda message, category, filename, lineno, file: f"{category.__name__}: {message}\n"
+
 def main():
 
     # Takes in command lines inputs from the user
@@ -38,14 +43,15 @@ def main():
     for genNumber in range(amountOfGeneration):
 
         if(genNumber == 0):
-            print("OG grid: ")
+            #print("OG grid: ")
+            pass
         else:
-            print("Gen",genNumber)
+            #print("Gen",genNumber)
             newBoard.nextGen()
 
         writeToFile(newBoard.displayBoard(),genNumber,amountOfGeneration, newBoard)
 
-        print(newBoard.displayBoard())
+        #print(newBoard.displayBoard())
 
 if __name__ == "__main__":
     main()

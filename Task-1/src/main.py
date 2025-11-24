@@ -1,9 +1,11 @@
-import logging
+import logging, sys
 
 from io_handler import loadDeliveries, writeRoutes
 from optimizer import optimizer
 
 from deliveryModels import Delivery, TransportType
+
+
 
 # Pythons logging function
 logging.basicConfig(
@@ -25,6 +27,13 @@ def main():
 
     # Loads deliveries from file
     listOfDeliveries = loadDeliveries()
+
+    # Checks if there are more than two deliveries.
+    if len(listOfDeliveries) <= 2:
+        print("Not enought deliveries, please update deliveries.")
+        logging.warning("Not enough deliveries")
+        sys.exit(1)
+
 
     # Gets the depot
     depot = listOfDeliveries[0]

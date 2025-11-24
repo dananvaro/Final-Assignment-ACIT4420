@@ -54,8 +54,6 @@ def readFromFile(filepath):
 
     if((row or col) == None) or (len(aliveCells) == 0):
         raise ValueError (f"Print row, col or amount of cells are invalid: row: {row}, col: {col} and alive cells: {aliveCells}")
-    
-    print(aliveCells[0])
 
     return row, col, aliveCells
 

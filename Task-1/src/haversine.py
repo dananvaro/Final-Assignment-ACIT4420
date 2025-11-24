@@ -2,8 +2,6 @@ import math
 
 def calculateHaversine(latOne,lonOne,latTwo,lonTwo):
 
-    # Expection/warning
-
     # Earths radius 
     r = 6371
 

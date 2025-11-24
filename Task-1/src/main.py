@@ -1,4 +1,4 @@
-import logging, sys
+import logging, sys, warnings
 
 from io_handler import loadDeliveries, writeRoutes
 from optimizer import optimizer
@@ -55,11 +55,8 @@ def main():
                 transport = TransportType("Walking")
                 break
 
-        except ValueError: 
-            print("Wrong value!")
-
-        except TypeError:
-            print("Must be an integer")
+        except (ValueError, TypeError) as e: 
+            warnings.warn("Thas's a invalid options, pick 1, 2, or 3")
 
 
     while True: 
@@ -78,11 +75,8 @@ def main():
                 criteria = "lowest"
                 break
 
-        except ValueError: 
-            print("Wrong value!")
-
-        except TypeError:
-            print("Must be an integer")
+        except (ValueError, TypeError) as e: 
+            warnings.warn("Thas's a invalid options, pick 1, 2, or 3")
 
     # Logs the metrics
     logging.info(f"Selected transport mode: {transport.type}")

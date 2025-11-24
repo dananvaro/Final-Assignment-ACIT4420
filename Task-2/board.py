@@ -17,7 +17,9 @@ class Board:
             self.grid.append(tmpRow)
     
     def updateCell (self, gridRow, gridCol, cell=1):
-        
+
+
+        # Checks if the cell is inside of grid
         if (0 <= gridRow < self.row and 0 <= gridCol < self.col):
             self.grid[gridRow][gridCol] = cell
 
@@ -37,7 +39,7 @@ class Board:
         return stringGrid
     
     def nextGen(self):
-
+        
         rule = rulesList[self.inRule]
         
         self.grid = rule(self.grid)

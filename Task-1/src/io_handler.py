@@ -1,6 +1,6 @@
 from deliveryModels import Delivery
 from validators import checkIfValid
-import csv, os, logging
+import csv, os, logging, warnings
 
 def loadDeliveries():
 
@@ -33,7 +33,8 @@ def loadDeliveries():
                 else:
 
                     # Logs the rejected row and writes the row to rejected file
-                    logging.warning("Rejected row: %r", row)
+                    logging.warning(f"Rejected row: {row}")
+                    warnings.warn(f"Rejected row du to invalid input: {row}")
                     write.writerow(row)
 
     return validDeliveries

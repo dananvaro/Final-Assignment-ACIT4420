@@ -14,7 +14,11 @@ logging.basicConfig(
     format="%(asctime)s  [%(levelname)s] %(message)s"
 )
 
-# Simple foramter that formats to hours and minutes
+# Warning format
+warnings.simplefilter("always")
+warnings.formatwarning = lambda message, category, filename, lineno, file: f"{category.__name__}: {message}\n"
+
+# Simple formatter that formats to hours and minutes
 def formatToHours(time):
     hours = int(time)
     minutes = int((time-hours) * 60)
@@ -54,9 +58,13 @@ def main():
             elif(userInput == 3):
                 transport = TransportType("Walking")
                 break
+            else: 
+                warnings.warn("That's a invalid options, pick 1, 2, or 3")
+                continue
+
 
         except (ValueError, TypeError) as e: 
-            warnings.warn("Thas's a invalid options, pick 1, 2, or 3")
+            warnings.warn("That's a invalid options, pick 1, 2, or 3")
 
 
     while True: 
@@ -74,9 +82,12 @@ def main():
             elif(userInput == 3):
                 criteria = "lowest"
                 break
+            else: 
+                warnings.warn("That's a invalid options, pick 1, 2, or 3")
+                continue
 
         except (ValueError, TypeError) as e: 
-            warnings.warn("Thas's a invalid options, pick 1, 2, or 3")
+            warnings.warn("That's a invalid options, pick 1, 2, or 3")
 
     # Logs the metrics
     logging.info(f"Selected transport mode: {transport.type}")
@@ -100,7 +111,7 @@ def main():
     print(f"Total time: {formatToHours(metrics['totalTime'])}")
     print(f"Total cost: {metrics['totalCost']:.2f} kr")
     print(f"Total CO2: {metrics['totalCO2']:.2f} g \n")
-    print(f"Executiom time: {(endTime-startTime)* 1000:.3f} ms")
+    print(f"Execution time: {(endTime-startTime)* 1000:.3f} ms")
 
 if __name__ == "__main__":
 

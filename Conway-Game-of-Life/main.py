@@ -37,24 +37,29 @@ def main():
     # Creates a Board object 
     newBoard = Board(row,col,rule)
 
+    # Insert the alive cells into the class
     for(gridX,gridY) in aliveCells:
         newBoard.updateCell(gridX,gridY)
 
+    # Print each iteration to the user
     for genNumber in range(amountOfGeneration):
 
-        time.sleep(0.5)
+        time.sleep(0.4)
+
 
         if(genNumber == 0):
             print("OG grid: ")
             
         else:
+
+            # Updates the grid
             print("Gen",genNumber)
             newBoard.nextGen()
         
-        
-
+        # Writes the grid to the user
         writeToFile(newBoard.displayBoard(),genNumber,amountOfGeneration, newBoard)
         
+        # Prints the grid to the user
         print(newBoard.displayBoard())
 
 if __name__ == "__main__":

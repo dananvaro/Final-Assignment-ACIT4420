@@ -1,5 +1,5 @@
 from rules import rulesList, rules
-import warnings
+import warnings, time
 
 class Board:
 
@@ -10,6 +10,7 @@ class Board:
         self.inRule = inRule
         self.grid = []
 
+        # Creates an empty grid with the same grid size
         for _ in range(self.row):
             tmpRow = []
             for _ in range(self.col):
@@ -24,13 +25,16 @@ class Board:
             self.grid[gridRow][gridCol] = cell
 
         else:
-            warnings.warn(f"Grid is out of bound and will be skipped.")
+            warnings.warn(f"Cell is out of bound: {(gridRow,gridCol)}")
+            time.sleep(1)
 
 
     def displayBoard(self):
         
+
         stringGrid =""
 
+        # Converts the grid into a string so it is easier to write to file
         for i in range(len(self.grid)):
             for j in range(len(self.grid[0])):
                 stringGrid += str(self.grid[i][j]) + " "
@@ -40,6 +44,11 @@ class Board:
     
     def nextGen(self):
         
+        
+        # Checks if rule is valid if it it it calls the rule and updates it to the new grid
+        if (self.inRule) not in rulesList:
+            raise ValueError(f"Rule {self.inRule} not found in rule list")
+
         rule = rulesList[self.inRule]
         
         self.grid = rule(self.grid)

@@ -6,7 +6,6 @@ from optimizer import optimizer
 from deliveryModels import Delivery, TransportType
 
 
-
 # Pythons logging function
 logging.basicConfig(
     filename="run.log",

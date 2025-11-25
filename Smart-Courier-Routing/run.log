@@ -1,0 +1,9 @@
+2025-11-25 19:40:24,340  [INFO] -------------------- Start of optimiztion --------------------
+2025-11-25 19:40:24,340  [WARNING] Rejected row: {'customer': 'Daniel', 'latitude': ' 59.916', 'longitude': ' 10.739', 'priority': ' Low', 'weight': ' -7'}
+2025-11-25 19:40:28,588  [INFO] Selected transport mode: car
+2025-11-25 19:40:28,588  [INFO] Selected optimization mode: cheapest
+2025-11-25 19:40:28,588  [INFO] Depot location 59.9200718 and 10.7357839
+2025-11-25 19:40:28,588  [INFO] Numbers of deliveries: 2
+2025-11-25 19:40:28,588  [INFO] Execution time: 0.045 ms
+2025-11-25 19:40:28,588  [INFO] Totals for routes: Total distance: 2.220 km, total time: 0h 2m,total cost: 8.88 kr, total CO2: 266.40 g
+2025-11-25 19:40:28,588  [INFO] -------------------- End of optimiztion --------------------

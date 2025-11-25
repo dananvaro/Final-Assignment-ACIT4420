@@ -66,7 +66,7 @@ def writeToFile(input, genNumber,genAmount, inBoard):
         #Raise here
         pass
 
-    patternPath = os.path.join(os.path.dirname(__file__),"log", "state_snapshots.txt")
+    patternPath = os.path.join(os.path.dirname(__file__),"data", "state_snapshots.txt")
     with open(patternPath, "a+") as f:
 
         if(genNumber == 0):

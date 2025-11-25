@@ -1,4 +1,4 @@
-import os
+import os, time
 from argparse import ArgumentParser, Namespace
 from board import Board
 from  io_handler import readFromFile, writeToFile
@@ -42,16 +42,20 @@ def main():
 
     for genNumber in range(amountOfGeneration):
 
+        time.sleep(0.5)
+
         if(genNumber == 0):
-            #print("OG grid: ")
-            pass
+            print("OG grid: ")
+            
         else:
-            #print("Gen",genNumber)
+            print("Gen",genNumber)
             newBoard.nextGen()
+        
+        
 
         writeToFile(newBoard.displayBoard(),genNumber,amountOfGeneration, newBoard)
-
-        #print(newBoard.displayBoard())
+        
+        print(newBoard.displayBoard())
 
 if __name__ == "__main__":
     main()

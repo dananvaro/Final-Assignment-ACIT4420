@@ -1,7 +1,7 @@
 
 # Final Assignment - ACIT 4420
 
-This reposity contains two Python projects, completed as part of the ACIT 4420 course. The task focuses on modular programming, I/O handling, metaprogramming, error handling, RegEx and logging. 
+This repository contains two Python projects, completed as part of the ACIT 4420 course. The tasks focuses on modular programming, I/O handling, metaprogramming, error handling, RegEx and logging. 
 
 
 

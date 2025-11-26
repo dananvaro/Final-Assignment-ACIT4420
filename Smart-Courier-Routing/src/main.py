@@ -1,14 +1,16 @@
-import logging, sys, warnings
+import logging, sys, warnings, os
 
 from io_handler import loadDeliveries, writeRoutes
 from optimizer import optimizer
 
 from deliveryModels import Delivery, TransportType
 
+dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+logFile = os.path.join(dir, "run.log")
 # Pythons logging function
 logging.basicConfig(
-    filename="run.log",
+    filename=logFile,
     level=logging.INFO,
     format="%(asctime)s  [%(levelname)s] %(message)s"
 )

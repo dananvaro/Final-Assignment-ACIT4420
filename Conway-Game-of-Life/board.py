@@ -45,7 +45,7 @@ class Board:
     def nextGen(self):
         
         
-        # Checks if rule is valid if it it it calls the rule and updates it to the new grid
+        # Checks if rule is valid if it calls the rule and updates it to the new grid
         if (self.inRule) not in rulesList:
             raise ValueError(f"Rule {self.inRule} not found in rule list")
 

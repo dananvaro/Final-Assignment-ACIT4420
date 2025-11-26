@@ -33,7 +33,7 @@ def defaultRules(inGrid):
     # Loops through the given Grid
     for i in range(arryRowLen):
         for j in range(arrColLen):
-            aliveNeigbour = 0
+            aliveNeiggbour = 0
             
             # Counts arround the cell to find alive cells
             for row, col in directions:
@@ -42,18 +42,18 @@ def defaultRules(inGrid):
 
                 # Checks if cells are inside of the grid
                 if((0 <= ix < arryRowLen and 0 <= jy < arrColLen) and (inGrid[ix][jy] == 1)):
-                    aliveNeigbour+= 1
+                    aliveNeiggbour+= 1
 
             # If cell has less than two or more that 3 alive neighbors it dies
-            if((aliveNeigbour < 2 or aliveNeigbour > 3) and inGrid[i][j] == 1):
+            if((aliveNeiggbour < 2 or aliveNeiggbour > 3) and inGrid[i][j] == 1):
                 newGrid[i][j] = 0
             
             # If a cell has exactly 3 alive neighours it becomes alive
-            elif(aliveNeigbour == 3 and inGrid[i][j] == 0):
+            elif(aliveNeiggbour == 3 and inGrid[i][j] == 0):
                 newGrid[i][j] = 1
 
             # If a cell has exaclty 2 or 3 alive cells it stays alive
-            elif((aliveNeigbour == 2 or aliveNeigbour == 3) and inGrid[i][j]== 1):
+            elif((aliveNeiggbour == 2 or aliveNeiggbour == 3) and inGrid[i][j]== 1):
                 newGrid[i][j] = 1
 
     return newGrid

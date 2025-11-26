@@ -57,7 +57,7 @@ def main():
 
 
         if(genNumber == 0):
-            print("OG grid: ")
+            print("Original grid: ")
             
         else:
 

@@ -48,20 +48,22 @@ cd Smart-Courier-Routing/src
 To run Smart-Courier-Routing
 ```
 python3 main.py
+```
 or
+```
 python main.py
-
 ```
 
 ## Task 2 - Conway-Game-of-Life
 ```
 cd Conway-Game-of-Life
-
 ```
 To run Conways Game of Life. Choose between beehivepatternWithErrors.txt, blinker.txt or random.txt patterns. Then choose number of generations.
 ```
 python3 main.py --patternfile <path_to_pattern_file> --generations <number_of_generations> --ruleset default
+```
 or
+```
 python main.py --patternfile <path_to_pattern_file> --generations <number_of_generations> --ruleset default
 
 ```

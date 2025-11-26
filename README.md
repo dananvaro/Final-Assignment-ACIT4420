@@ -65,7 +65,6 @@ python3 main.py --patternfile <path_to_pattern_file> --generations <number_of_ge
 or
 ```
 python main.py --patternfile <path_to_pattern_file> --generations <number_of_generations> --ruleset default
-
 ```
 Sample 
 ```

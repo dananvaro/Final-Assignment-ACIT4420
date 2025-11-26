@@ -1,4 +1,4 @@
-import os, time
+import os, time, argparse
 from argparse import ArgumentParser, Namespace
 from board import Board
 from  io_handler import readFromFile, writeToFile
@@ -8,13 +8,22 @@ import warnings
 warnings.simplefilter("always")
 warnings.formatwarning = lambda message, category, filename, lineno, file: f"{category.__name__}: {message}\n"
 
+# A method that checks if the generations is a positive integer
+def checkIfPositive(cliNumber):
+
+    value = int(cliNumber)
+
+    if value <=0:
+        raise argparse.ArgumentParser(f"The value must be postive integer and cannot be: {value}")
+    return value
+
 def main():
 
     # Takes in command lines inputs from the user
     parser = ArgumentParser()
 
     parser.add_argument('--patternfile', required=True, help="Pattern file name with .txt", type=str)
-    parser.add_argument('--generations',required=True, help="Number of generations", type= int)
+    parser.add_argument('--generations',required=True, help="Number of generations a postive integer", type= checkIfPositive)
     parser.add_argument('--ruleset',default="default", help="Choose a ruleset or default will be chosen",type=str)
 
     args: Namespace = parser.parse_args()
